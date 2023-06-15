@@ -1,0 +1,10 @@
+<xml version=1.0 encodeing="UTF-8">
+<page>
+	<datbase name="">
+		<table name 0  p>
+			<sql id='getOrderList'>
+					
+			</sql>
+		</table>
+	</datbase>
+</page>
