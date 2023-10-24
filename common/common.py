@@ -22,10 +22,8 @@ def get_xls(xls_name, sheet_name):
     return cls
 
 
-# 从xml文件中读取sql语句
+# 从xml文件中读取sql语句，并存入一个字典中
 database = {}
-
-
 # 返回sql字典  格式为database{
 #                           db1{
 #                               tb1
@@ -56,13 +54,11 @@ def set_xml():
                 table[table_name] = sql
             database[db_name] = table
 
-
 # 获取指定表字典
 def get_xml_dict(database_name, table_name):
     set_xml()
     database_dict = database.get(database_name).get(table_name)
     return database_dict
-
 
 # 获取指定sql
 def get_sql(database_name, table_name, sql_id):

@@ -6,14 +6,12 @@ from common.Log import MyLog
 
 logger = MyLog.get_log().get_logger()
 
-
 def test_orderList():
     assert 1 == 2
 
-
 def test_getAllOrders():
-    testCase = common.get_xls("order_datas.xlsx","Order")
 
+    testCase = common.get_xls("order_datas.xlsx","Order")
     httpConfig = ConfigHttp()
     httpConfig.config(testCase,0)
     response = httpConfig.post()

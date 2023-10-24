@@ -1,10 +1,10 @@
 <?xml version="1.0" encodeing="UTF-8"?>
 <page>
-	<datbase name="">
-		<table name="">
+	<database name="ixp-op">
+		<table name="portal_order_info">
 			<sql id="select_orderList">
-					
+				select * from portal_order_info limit 10
 			</sql>
 		</table>
-	</datbase>
+	</database>
 </page>

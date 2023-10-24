@@ -27,6 +27,7 @@ class App():
                 self.caseList.append(test_case_path.replace("\n", ""))
         fb.close()
 
+    # 执行测试用例
     def run(self):
         send_or_not = localReadConfig.get_email('send_or_not')
         commands = ['-s','-v']    # pytest命令
@@ -41,18 +42,19 @@ class App():
                 return
             for case in self.caseList:
                 commands.append(case)
-            result_path = self.log.get_result_path()
+            result_path = self.log.get_result_path()     # 测试结果路径
             #report_path = os.path.join(result_path,"html-report")
-            allure_path = os.path.join(result_path,"allure-report")
+            allure_path = os.path.join(result_path,"allure-report")    # 测试报告路径
             # --html',os.path.join(result_path, "report.html")
-            commands.append('--alluredir='+os.path.join(allure_path,"json"))   # allure报告
-            pytest.main(commands)
+            commands.append('--alluredir='+os.path.join(allure_path,"json"))   # 拼接allure相关命令
+            pytest.main(commands)      # 执行命令
+            # 指定allure生成json和html的路径，html下的文件可通过浏览器访问
             os.system(r"allure generate " +os.path.join(allure_path,"json")+' -o '+os.path.join(allure_path,"html")+' --clean')
         except Exception as ex:
             self.logger.error(str(ex))
         finally:
             self.logger.info("*********TEST END*********")
-            # 发送邮件
+            # 发送邮件，发送邮件标志为1则发送，为0不发送
             if int(send_or_not) == 1 and hasCase == 1:
                 self.email.send_email()
             elif int(send_or_not) == 0:

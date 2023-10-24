@@ -3,12 +3,11 @@ import readConfig as readConfig
 from common.Log import MyLog
 from common import common
 
-
 # 创建读取配置文件对象
 localReadConfig = readConfig.ReadConfig()
 
-
 class ConfigHttp:
+    # 获取http相关配置
     def __init__(self):
         global host, port, timeout
         host = localReadConfig.get_http("baseurl")

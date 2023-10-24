@@ -35,14 +35,14 @@ class Log:
 
     def get_logger(self):
         return self.logger
-    '''
+
     def get_report_path(self):
         reportPath = os.path.join(logPath,"report.html")
         return reportPath
-    '''
+
     def get_result_path(self):
         return logPath
-
+# 自定义Log类
 class MyLog:
     log = None
     # 定义
@@ -52,7 +52,7 @@ class MyLog:
         pass
 
     @staticmethod
-    def get_log():
+    def get_log():    # log方法加锁
         if MyLog.log is None:
             MyLog.mutex.acquire()    # 获取锁
             MyLog.log = Log()
